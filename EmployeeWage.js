@@ -86,4 +86,11 @@ console.log("UC7E - Check all element have full time wage: "+fullDayWageArr.ever
 function isAnyPartTimeWage(dailyWage){
     return dailyWage.includes("80");
 }
-console.log("UC7F - Days with part time wage: "+mapDayWithWageArr.some(isAnyPartTimeWage));
+console.log("UC7F - if there any days with part time wage: "+mapDayWithWageArr.some(isAnyPartTimeWage));
+
+//UC 7G
+function totalDaysWorked(numOfDays, dailyWage){
+    if(dailyWage > 0) return numOfDays+1;
+    return numOfDays;
+}
+console.log("UC7G - umber of days Emp worked: "+empDailyWageArr.reduce(totalDaysWorked,0));
