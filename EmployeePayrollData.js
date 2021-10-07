@@ -33,11 +33,16 @@ class EmployeePayrollData {
     }
     get gender() { return this._gender; }
     set gender(gender) {
-        this._gender = gender;
+        let genderRegex = RegExp('(^M$)|(^F$)');
+        if(genderRegex.test(gender))
+            this._gender = gender;
+        else throw 'gender must be either M or F';
     }
     get startDate() { return this._startDate; }
     set startDate(startDate) {
-        this._startDate = startDate;
+        if(new Date() >= startDate) 
+            this._startDate = startDate;
+        else throw 'Invalid date it can not be a future date'; 
     }
 
     //method
@@ -48,7 +53,7 @@ class EmployeePayrollData {
     }
 }
 
-let employeePayrollData = new EmployeePayrollData(1, "Mark", 30000);
+let employeePayrollData = new EmployeePayrollData(1, "Mark", 30000, "M", new Date());
 console.log(employeePayrollData.toString());
 try{
     employeePayrollData.name = "jo";
@@ -66,6 +71,20 @@ catch(e){
 }
 try{
     employeePayrollData.salary = -2000;
+    console.log(employeePayrollData.toString());
+}
+catch(e){
+    console.error(e);
+}
+try{
+    employeePayrollData.gender = "MF";
+    console.log(employeePayrollData.toString());
+}
+catch(e){
+    console.error(e);
+}
+try{
+    employeePayrollData.startDate = new Date()+1;
     console.log(employeePayrollData.toString());
 }
 catch(e){
