@@ -12,10 +12,7 @@ class EmployeePayrollData {
     //getter and setter
     get name() { return this._name; }
     set name(name) {
-        let nameRegex = RegExp('^[A-Z]{1}[a-z]{2,}$');
-        if(nameRegex.test(name))
-            this._name = name;
-        else throw 'Name is Incorrect! please enter correct one';
+        this._name = name;
     }
     get id() { return this._id; }
     set id(id) {
@@ -44,12 +41,7 @@ class EmployeePayrollData {
 
 let employeePayrollData = new EmployeePayrollData(1, "Mark", 30000);
 console.log(employeePayrollData.toString());
-try{
-    employeePayrollData.name = "jo";
-    console.log(employeePayrollData.toString());
-}
-catch (e){
-    console.error(e);
-}
+employeePayrollData.name = "John";
+console.log(employeePayrollData.toString());
 let newEmployeePayrollData = new EmployeePayrollData(2, "Tanisha", 30000, "F", new Date());
-console.log(newEmployeePayrollData.toString()); 
+console.log(newEmployeePayrollData.toString());
