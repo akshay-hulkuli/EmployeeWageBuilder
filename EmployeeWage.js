@@ -100,7 +100,7 @@ function calcDailyWage(empHrs) {
         if(dailyWage > 0) return numOfDays+1;
         return numOfDays;
     }
-    console.log("UC7G - umber of days Emp worked: "+empDailyWageArr.reduce(totalDaysWorked,0));
+    console.log("UC7G - number of days Emp worked: "+empDailyWageArr.reduce(totalDaysWorked,0));
 
 
     //UC9
@@ -170,4 +170,38 @@ function calcDailyWage(empHrs) {
                             .map(dailyHrsAndWage => dailyHrsAndWage.dayNum);
     console.log("\nUC 11D Non working days "+nonWorkingDayNums);
 
+
+//UC 7 Redone
+    // 7A 
+    let totEmpWage = 0;
+    empDailyHrsAndWageArr.forEach((empDailyHrsAndWage) => totEmpWage += empDailyHrsAndWage.dailyWage);
+    console.log("UC7A REDONE - Total Days: "+ totalWorkingDays+ " Total hrs:"+ totalEmpHrs+ " Emp Wage: "+ totEmpWage);
+
+    // 7B
+    let mapDayWithWageArr = [];
+    empDailyHrsAndWageArr.map(empDailyHrsAndWage => mapDayWithWageArr.push(empDailyHrsAndWage.dayNum+ " = "+ empDailyHrsAndWage.dailyWage));
+    console.log("UC7B REDONE - Daily wage map");
+    console.log(mapDayWithWageArr);
+
+    //7C
+    let fullDayWageArr = empDailyHrsAndWageArr.filter(empDailyHrsAndWage => empDailyHrsAndWage.dailyWage == 160);
+    console.log("UC7C REDONE - Day with full time wage earned");
+    fullDayWageArr.forEach(element => console.log(element.toString()))
+
+   //7D
+    console.log("UC7D REDONE- First time full time wage earned : "+empDailyHrsAndWageArr.find(empDailyHrsAndWage => empDailyHrsAndWage.dailyWage == 160));
+
+    //7E
+    console.log("UC7E REDONE- Check all element have full time wage: "+empDailyHrsAndWageArr.every(empDailyHrsAndWage => empDailyHrsAndWage.dailyWage == 160));
+
+    //7F
+    console.log("UC7F REDONE - if there any days with part time wage: "+empDailyHrsAndWageArr.some(empDailyHrsAndWage => empDailyHrsAndWage.dailyWage == 80));
+
+    //UC 7G
+    let count =0;
+    empDailyHrsAndWageArr.forEach((currentObject) => {
+        if(currentObject.dailyWage>0) 
+        count++;
+    });
+    console.log("UC7G REDONE - number of days Emp worked: "+ count);
 }
