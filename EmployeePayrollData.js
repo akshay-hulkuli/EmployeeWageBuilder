@@ -19,11 +19,17 @@ class EmployeePayrollData {
     }
     get id() { return this._id; }
     set id(id) {
-        this._id = id;
+        let idRegex = RegExp('^[1-9][0-9]*$');
+        if(idRegex.test(id))
+            this._id = id;
+        else throw 'Id is not non zero positive number';
     }
     get salary() { return this._salary; }
     set salary(salary) {
-        this._salary = salary;
+        let salaryRegex = RegExp('^[1-9][0-9]*$');
+        if(salaryRegex.test(salary))
+            this._salary = salary;
+        else throw 'Salary must be non zero positive number';
     }
     get gender() { return this._gender; }
     set gender(gender) {
@@ -46,6 +52,20 @@ let employeePayrollData = new EmployeePayrollData(1, "Mark", 30000);
 console.log(employeePayrollData.toString());
 try{
     employeePayrollData.name = "jo";
+    console.log(employeePayrollData.toString());
+}
+catch(e){
+    console.error(e);
+}
+try{
+    employeePayrollData.id = -1;
+    console.log(employeePayrollData.toString());
+}
+catch(e){
+    console.error(e);
+}
+try{
+    employeePayrollData.salary = -2000;
     console.log(employeePayrollData.toString());
 }
 catch(e){
